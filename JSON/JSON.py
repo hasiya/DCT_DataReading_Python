@@ -1,4 +1,7 @@
 import json
+import dicttoxml
+import XML.XML as XML
+import xml.etree.ElementTree as ET
 
 def readfile(file):
     try:
@@ -11,9 +14,19 @@ def readfile(file):
 
 
 def process(file):
-    for key in file.keys():
-        print(key.items())
-        process(key)
+    xml_s = dicttoxml.dicttoxml(file)
+    xml=ET.fromstring(xml_s)
+    # root = xml.getroot()
+    XML.processFile(xml)
+
+    # for key, value in file.items():
+    #     if(isinstance(value,list)):
+    #         print("list")
+    #     else:
+    #         print("not list")
+    #
+    #
+    #     process(value)
 
 
 if __name__ == "__main__":

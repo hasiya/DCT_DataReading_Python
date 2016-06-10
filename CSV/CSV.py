@@ -1,4 +1,5 @@
 import csv
+import simplejson as json
 
 def readFile(file,feildNames):
     try:
@@ -7,10 +8,16 @@ def readFile(file,feildNames):
             if(feildNames == 'Y'):
                 reader = csv.DictReader(C_file)
                 headers = reader.fieldnames
+                Data_dict = []
                 for line in reader:
+                    line_as_dict = {}
                     for h in headers:
-                        print(h, ":",line[h])
-                    print()
+                        line_as_dict[h]=line[h]
+                        # print(h, ":",line[h])
+                    Data_dict.append(line_as_dict)
+                    # print()
+                dataJson = json.dumps(Data_dict)
+                print(Data_dict)
             else:
                 reader = csv.reader(C_file)
                 for line in reader:
