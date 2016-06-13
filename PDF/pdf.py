@@ -25,4 +25,4 @@ def convert(fname, pages=None):
     output.close
     return text
 
-convert('Simple.pdf',[1,2])
+convert('Simple.pdf',[0])

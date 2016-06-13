@@ -26,7 +26,7 @@ def readFile(file,feildNames):
                     print()
 
 
-    except FileNotFoundError as e:
+    except IOError as e:
         print(e)
 
 if __name__ == "__main__":

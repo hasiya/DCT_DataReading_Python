@@ -21,17 +21,21 @@ def convert(fname, pages=None):
     converter = TextConverter(manager, output, laparams=LAParams())
     interpreter = PDFPageInterpreter(manager, converter)
 
-    infile = file(fname, 'rb')
-    for page in PDFPage.get_pages(infile, pagenums):
-        # a = page.contents[0].rawdata
-        # print ('u', a)
-        # print
-        # splitData = a.split('\n')
-        interpreter.process_page(page)
-    infile.close()
-    converter.close()
-    text = output.getvalue()
-    output.close()
+    try:
+
+        infile = file(fname, 'rb')
+        for page in PDFPage.get_pages(infile, pagenums):
+            # a = page.contents[0].rawdata
+            # print ('u', a)
+            # print
+            # splitData = a.split('\n')
+            interpreter.process_page(page)
+        infile.close()
+        converter.close()
+        text = output.getvalue()
+        output.close()
+    except IOError as e:
+        print e
     # print ('u', text)
     # print
     # print(text)

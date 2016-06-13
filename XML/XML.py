@@ -1,5 +1,4 @@
 import xml.etree.ElementTree as ET
-from ptyprocess.ptyprocess import FileNotFoundError
 
 
 def readfile(file):
@@ -11,7 +10,7 @@ def readfile(file):
             print(root.tag)
 
             processFile(root)
-    except FileNotFoundError as e:
+    except IOError as e:
         print(e)
 
 

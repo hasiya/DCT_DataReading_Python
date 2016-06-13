@@ -1,6 +1,4 @@
 import json
-from ptyprocess.ptyprocess import FileNotFoundError
-
 import dicttoxml
 import XML.XML as XML
 import xml.etree.ElementTree as ET
@@ -10,8 +8,8 @@ def readfile(file):
         with open(file,'r') as jsonfile:
             file = json.load(jsonfile)
             process(file)
-
-    except FileNotFoundError as e:
+            jsonfile.close()
+    except IOError as e:
         print(e)
 
 
